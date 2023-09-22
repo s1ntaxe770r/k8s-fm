@@ -1,0 +1,12 @@
+apiVersion: operators.gophers.jubril.xyz/v1beta1
+kind: Playlist
+metadata:
+  labels:
+    app.kubernetes.io/name: playlist
+    app.kubernetes.io/instance: playlist-sample
+    app.kubernetes.io/part-of: kates-playback
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/created-by: kates-playback
+  name: playlist-sample
+spec:
+  # TODO(user): Add fields here

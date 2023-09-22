@@ -1,0 +1,27 @@
+# permissions for end users to view playlists.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: playlist-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: kates-playback
+    app.kubernetes.io/part-of: kates-playback
+    app.kubernetes.io/managed-by: kustomize
+  name: playlist-viewer-role
+rules:
+- apiGroups:
+  - operators.gophers.jubril.xyz
+  resources:
+  - playlists
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - operators.gophers.jubril.xyz
+  resources:
+  - playlists/status
+  verbs:
+  - get
