@@ -6,7 +6,7 @@ metadata:
   namespace: default
 spec:
   name: Friday Night
-  description: Deployed with k8s-fm on Civo
+  description: Deployed with k8s-fm
   public: false
   tracks:
     - 131VWXiIikAxtjHY5n2Ryu   # Sharma (Daniel Rateuke Remix) - &lez, Daniel Rateuke
