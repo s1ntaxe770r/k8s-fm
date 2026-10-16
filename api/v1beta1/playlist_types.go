@@ -17,29 +17,57 @@ limitations under the License.
 package v1beta1
 
 import (
-	"github.com/zmb3/spotify"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
-// EDIT THIS FILE!  THIS IS SCAFFOLDING FOR YOU TO OWN!
-// NOTE: json tags are required.  Any new fields you add must have json tags for the fields to be serialized.
-
+// PlaylistSpec defines the desired state of a Spotify playlist
 type PlaylistSpec struct {
-	Description string       `json:"description"`
-	Tracks      []spotify.ID `json:"tracks"`
+	// Name of the playlist on Spotify. Defaults to metadata.name.
+	// +optional
+	Name string `json:"name,omitempty"`
+
+	// +optional
+	Description string `json:"description,omitempty"`
+
+	// Public controls whether the playlist is visible on the owner's profile.
+	// +optional
+	Public bool `json:"public,omitempty"`
+
+	// Tracks is the ordered list of Spotify track IDs (e.g. 4uLU6hMCjMI75M1A2tKUQC).
+	// The playlist is kept in sync with this list.
+	// +optional
+	Tracks []string `json:"tracks,omitempty"`
 }
 
 // PlaylistStatus defines the observed state of Playlist
 type PlaylistStatus struct {
-	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
-	// Important: Run "make" to regenerate code after modifying this file
-	Reason     string             `json:"reason"`
-	Message    string             `json:"message"`
-	Conditions []metav1.Condition `json:"conditions"`
+	// PlaylistID is the Spotify ID of the playlist managed by this resource.
+	// +optional
+	PlaylistID string `json:"playlistID,omitempty"`
+
+	// URL is the open.spotify.com link to the playlist.
+	// +optional
+	URL string `json:"url,omitempty"`
+
+	// TrackCount is the number of tracks on the playlist after the last sync.
+	// +optional
+	TrackCount int `json:"trackCount,omitempty"`
+
+	// +optional
+	ObservedGeneration int64 `json:"observedGeneration,omitempty"`
+
+	// +optional
+	Conditions []metav1.Condition `json:"conditions,omitempty"`
 }
 
 // +kubebuilder:object:root=true
 // +kubebuilder:subresource:status
+// +kubebuilder:printcolumn:name="Playlist ID",type=string,JSONPath=`.status.playlistID`
+// +kubebuilder:printcolumn:name="Tracks",type=integer,JSONPath=`.status.trackCount`
+// +kubebuilder:printcolumn:name="Ready",type=string,JSONPath=`.status.conditions[?(@.type=="Ready")].status`
+// +kubebuilder:printcolumn:name="Age",type=date,JSONPath=`.metadata.creationTimestamp`
+
+// Playlist is a Spotify playlist managed from Kubernetes
 type Playlist struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`

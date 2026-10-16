@@ -1,0 +1,29 @@
+# Tracks from ~/Music/Music/NewAge tech, matched on Spotify.
+apiVersion: operators.gophers.jubril.xyz/v1beta1
+kind: Playlist
+metadata:
+  name: friday-night
+  namespace: default
+spec:
+  name: Friday Night
+  description: Deployed with k8s-fm on Civo
+  public: false
+  tracks:
+    - 131VWXiIikAxtjHY5n2Ryu   # Sharma (Daniel Rateuke Remix) - &lez, Daniel Rateuke
+    - 03sXQNaL8fZskWX4tEamuE   # Natural Blues (TECIE) (Extended Mix) - Moby, Jacob Lusk, BLOND:ISH, Kiko Franco
+    - 5s4aAUvtg6WLqKzXsEKVZz   # El Llanto - Nitefreak, Alfred DeLuna
+    - 1D7PE3dDyonJfUP6oSuaq7   # Waves & Wavs - Ahmed Spins, Lizwi
+    - 3eNQJg5bmvpBLlOW0LDqhE   # Sawa - Ahmed Spins, Idd Aziz
+    - 0CtUfVoVGHDYIkpGzPKBOs   # Blessings - Liva K, OVEOUS
+    - 7zLm8NfYfn4IRd3GF35N3O   # Filtered African Blues (FNX Omar Remix) - Oscar P, FNX OMAR
+    - 4e9FcdMSm27Lh8RIae2wQC   # International Thief Thief (Armonica & MoBlack Extended Mix) - Fela Kuti
+    - 0qKHpiXu8bjQ9TCW5XEBkl   # Que Rico - JUNO (DE)
+    - 4AlfcRLEx3z8hjvbIqPbAq   # D10 - Boddhi Satva
+    - 7GEXaUD7Rhr2pKB5hkYj94   # Canoa - DJ Gregory, Gregor Salto
+    - 5rxK4yQgpnw4v97HqLCF8x   # BroCode - DJ Merlon, Enoo Napa
+    - 2XznYoTrddhzEz6xFd9ia6   # Shield - Djknator, MotionRSA, K.C Driller
+    - 0uwyoPRBDdGa7nx677jhO7   # Bo Gogo (Magical Remix) - Kelvin Momo, Dlala Thukzin, Da Muziqal Chef
+    - 7qLefuu9uxePJsOEm05DLS   # Give Reason - Foozak, Pippi Ciez, Lazarusman
+    - 53R3tn8kpaElcdtZSdu5LJ   # Is That All There Is - Liva K, Jordy (GR)
+    - 2jLcwYog8ujcWJd2I4bBnM   # SING IT BACK - Adore (FR), Marine Abtan
+    - 0bSboTVG5rwYqO5effkeAU   # So You Want It - Roberto Capuano

@@ -30,7 +30,7 @@ import (
 	logf "sigs.k8s.io/controller-runtime/pkg/log"
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
-	operatorsv1beta1 "github.com/s1ntaxe770r/kates-playback/api/v1beta1"
+	operatorsv1beta1 "github.com/s1ntaxe770r/k8s-fm/api/v1beta1"
 	//+kubebuilder:scaffold:imports
 )
 

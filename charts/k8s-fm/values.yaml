@@ -1,0 +1,50 @@
+image:
+  repository: ghcr.io/s1ntaxe770r/k8s-fm
+  # Defaults to the chart appVersion.
+  tag: ""
+  pullPolicy: IfNotPresent
+
+imagePullSecrets: []
+
+# Spotify credentials. Either point at an existing Secret with the keys
+# SPOTIFY_ID, SPOTIFY_SECRET and SPOTIFY_REFRESH_TOKEN, or set the three
+# values below and the chart creates the Secret.
+spotify:
+  existingSecret: ""
+  clientId: ""
+  clientSecret: ""
+  refreshToken: ""
+
+# How often each playlist is re-checked against Spotify so edits made in the
+# Spotify app are reverted to match the spec.
+resyncPeriod: 5m
+
+leaderElection: true
+
+serviceAccount:
+  # Defaults to the release fullname.
+  name: ""
+
+resources:
+  limits:
+    cpu: 200m
+    memory: 128Mi
+  requests:
+    cpu: 10m
+    memory: 64Mi
+
+podSecurityContext:
+  runAsNonRoot: true
+  seccompProfile:
+    type: RuntimeDefault
+
+securityContext:
+  allowPrivilegeEscalation: false
+  readOnlyRootFilesystem: true
+  capabilities:
+    drop:
+      - ALL
+
+nodeSelector: {}
+tolerations: []
+affinity: {}

@@ -6,8 +6,8 @@ metadata:
     app.kubernetes.io/name: namespace
     app.kubernetes.io/instance: system
     app.kubernetes.io/component: manager
-    app.kubernetes.io/created-by: kates-playback
-    app.kubernetes.io/part-of: kates-playback
+    app.kubernetes.io/created-by: k8s-fm
+    app.kubernetes.io/part-of: k8s-fm
     app.kubernetes.io/managed-by: kustomize
   name: system
 ---
@@ -21,8 +21,8 @@ metadata:
     app.kubernetes.io/name: deployment
     app.kubernetes.io/instance: controller-manager
     app.kubernetes.io/component: manager
-    app.kubernetes.io/created-by: kates-playback
-    app.kubernetes.io/part-of: kates-playback
+    app.kubernetes.io/created-by: k8s-fm
+    app.kubernetes.io/part-of: k8s-fm
     app.kubernetes.io/managed-by: kustomize
 spec:
   selector:
@@ -72,6 +72,10 @@ spec:
         - --leader-elect
         image: controller:latest
         name: manager
+        # SPOTIFY_ID, SPOTIFY_SECRET and SPOTIFY_REFRESH_TOKEN; see README.
+        envFrom:
+        - secretRef:
+            name: spotify-credentials
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:

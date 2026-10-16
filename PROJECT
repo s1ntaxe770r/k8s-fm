@@ -5,8 +5,8 @@
 domain: gophers.jubril.xyz
 layout:
 - go.kubebuilder.io/v4
-projectName: kates-playback
-repo: github.com/s1ntaxe770r/kates-playback
+projectName: k8s-fm
+repo: github.com/s1ntaxe770r/k8s-fm
 resources:
 - api:
     crdVersion: v1
@@ -15,6 +15,6 @@ resources:
   domain: gophers.jubril.xyz
   group: operators
   kind: Playlist
-  path: github.com/s1ntaxe770r/kates-playback/api/v1beta1
+  path: github.com/s1ntaxe770r/k8s-fm/api/v1beta1
   version: v1beta1
 version: "3"

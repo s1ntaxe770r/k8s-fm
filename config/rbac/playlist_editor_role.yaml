@@ -6,8 +6,8 @@ metadata:
     app.kubernetes.io/name: clusterrole
     app.kubernetes.io/instance: playlist-editor-role
     app.kubernetes.io/component: rbac
-    app.kubernetes.io/created-by: kates-playback
-    app.kubernetes.io/part-of: kates-playback
+    app.kubernetes.io/created-by: k8s-fm
+    app.kubernetes.io/part-of: k8s-fm
     app.kubernetes.io/managed-by: kustomize
   name: playlist-editor-role
 rules:
