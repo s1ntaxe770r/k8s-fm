@@ -1,0 +1,67 @@
+# Mirrors config/rbac/role.yaml, which controller-gen generates from the
+# +kubebuilder:rbac markers in internal/controller.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "k8s-fm.fullname" . }}
+  labels:
+    {{- include "k8s-fm.labels" . | nindent 4 }}
+rules:
+  - apiGroups: ["operators.gophers.jubril.xyz"]
+    resources: ["playlists"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  - apiGroups: ["operators.gophers.jubril.xyz"]
+    resources: ["playlists/status"]
+    verbs: ["get", "update", "patch"]
+  - apiGroups: ["operators.gophers.jubril.xyz"]
+    resources: ["playlists/finalizers"]
+    verbs: ["update"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ include "k8s-fm.fullname" . }}
+  labels:
+    {{- include "k8s-fm.labels" . | nindent 4 }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ include "k8s-fm.fullname" . }}
+subjects:
+  - kind: ServiceAccount
+    name: {{ include "k8s-fm.serviceAccountName" . }}
+    namespace: {{ .Release.Namespace }}
+{{- if .Values.leaderElection }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: {{ include "k8s-fm.fullname" . }}-leader-election
+  labels:
+    {{- include "k8s-fm.labels" . | nindent 4 }}
+rules:
+  - apiGroups: [""]
+    resources: ["configmaps"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  - apiGroups: ["coordination.k8s.io"]
+    resources: ["leases"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  - apiGroups: [""]
+    resources: ["events"]
+    verbs: ["create", "patch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: {{ include "k8s-fm.fullname" . }}-leader-election
+  labels:
+    {{- include "k8s-fm.labels" . | nindent 4 }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: {{ include "k8s-fm.fullname" . }}-leader-election
+subjects:
+  - kind: ServiceAccount
+    name: {{ include "k8s-fm.serviceAccountName" . }}
+    namespace: {{ .Release.Namespace }}
+{{- end }}

@@ -4,9 +4,14 @@ metadata:
   labels:
     app.kubernetes.io/name: playlist
     app.kubernetes.io/instance: playlist-sample
-    app.kubernetes.io/part-of: kates-playback
+    app.kubernetes.io/part-of: k8s-fm
     app.kubernetes.io/managed-by: kustomize
-    app.kubernetes.io/created-by: kates-playback
+    app.kubernetes.io/created-by: k8s-fm
   name: playlist-sample
 spec:
-  # TODO(user): Add fields here
+  name: k8s-fm sample
+  description: Managed by k8s-fm
+  public: false
+  tracks:
+  - 4uLU6hMCjMI75M1A2tKUQC
+  - 7GhIk7Il098yCjg4BQjzvb

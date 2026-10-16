@@ -1,0 +1,18 @@
+k8s-fm is running in the {{ .Release.Namespace }} namespace.
+
+Create a playlist:
+
+  kubectl apply -f - <<'YAML'
+  apiVersion: operators.gophers.jubril.xyz/v1beta1
+  kind: Playlist
+  metadata:
+    name: my-playlist
+  spec:
+    description: Managed by k8s-fm
+    tracks:
+      - 4uLU6hMCjMI75M1A2tKUQC
+  YAML
+
+Then check it with:
+
+  kubectl get playlists

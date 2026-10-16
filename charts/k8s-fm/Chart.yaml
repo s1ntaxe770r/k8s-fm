@@ -1,0 +1,6 @@
+apiVersion: v2
+name: k8s-fm
+description: Kubernetes operator that manages Spotify playlists
+type: application
+version: 0.1.0
+appVersion: "0.1.0"
